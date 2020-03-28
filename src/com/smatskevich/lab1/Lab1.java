@@ -46,7 +46,7 @@ public class Lab1 {
             		return;
             	}
             	
-            	if(number < 1 && number > 47) {
+            	if(number < 1 || number > 47) {
             		labelResultValue.setText("Error");
                     frame.pack();
             		return;
@@ -57,21 +57,21 @@ public class Lab1 {
             	
             	if(number == 1)
             		result = 0;
-            	
-            	if(number > 1 && number < 4 )
+            	else if(number > 1 && number < 4 )
             		result = prev[number - 2];
-            	
-            	
-            	for(int i = 3; i < number; i++)
+            	else
             	{
-            		int temp = prev[0];
-            		prev[0] = prev[1];
-            		prev[1] = temp;
-            		
-            		prev[1] = prev[0] + prev[1];
+	            	for(int i = 3; i < number; i++)
+	            	{
+	            		int temp = prev[0];
+	            		prev[0] = prev[1];
+	            		prev[1] = temp;
+	            		
+	            		prev[1] = prev[0] + prev[1];
+	            	}
+	            	
+	            	result = prev[1];
             	}
-            	
-            	result = prev[1];
             	
             	labelResultValue.setText(Integer.toString(result));
                 frame.pack();
